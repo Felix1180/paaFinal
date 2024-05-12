@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(self.table)
 
     def merge_sort(self, arr, key):
-        if len(arr) <= 1:
+        if len(arr) <= 1: #O(1)
             return arr
 
         mid = len(arr) // 2
@@ -58,7 +58,7 @@ class MainWindow(QMainWindow):
                 left_val = left[left_index][1]
                 right_val = right[right_index][1]
             elif key == "IPK":
-                right_val = left[left_index][2]  # ini kutukar left sama rightnya biar IPK nya sortnya dari atas ke bawah
+                right_val = left[left_index][2]  #Descending
                 left_val = right[right_index][2]
 
             if left_val < right_val:
@@ -107,6 +107,9 @@ class MainWindow(QMainWindow):
             ipk_item = QTableWidgetItem(str(ipk))
             ipk_item.setTextAlignment(Qt.AlignCenter)
             self.table.setItem(row, 2, ipk_item)
+
+        # Resize the columns to fit content
+        self.table.resizeColumnsToContents()
 
     def load_student_data(self):
         try:
